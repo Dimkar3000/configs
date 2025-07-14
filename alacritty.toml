@@ -1,0 +1,16 @@
+[window]
+startup_mode="Maximized"
+
+[terminal.shell]
+program="pwsh"
+
+[font]
+normal = { family = "FiraCode Nerd Font Mono", style="Regular" }
+
+[general]
+live_config_reload=true
+
+[keyboard]
+bindings = [
+    { key = "Backspace", mods = "Control", chars = "\u0008"},
+] 
