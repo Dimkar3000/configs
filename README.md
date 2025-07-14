@@ -1,0 +1,4 @@
+## Requirements
+- fzf
+- alacrity
+- ripgrep
