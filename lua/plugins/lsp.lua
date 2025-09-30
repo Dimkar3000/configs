@@ -144,6 +144,7 @@ return {
 			-- gopls = {},
 			-- pyright = {},
 			rust_analyzer = {},
+			netcoredbg = {},
 			roslyn = {
 				settings = {
 					["csharp|inlay_hints"] = {
