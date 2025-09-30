@@ -4,7 +4,15 @@ return {
 		-- Automatically install LSPs and related tools to stdpath for Neovim
 		-- Mason must be loaded before its dependents so we need to set it up here.
 		-- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-		{ "mason-org/mason.nvim", opts = {} },
+		{
+			"mason-org/mason.nvim",
+			opts = {
+				registries = {
+					"github:mason-org/mason-registry",
+					"github:Crashdummyy/mason-registry",
+				},
+			},
+		},
 		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
@@ -136,6 +144,29 @@ return {
 			-- gopls = {},
 			-- pyright = {},
 			rust_analyzer = {},
+			roslyn = {
+				settings = {
+					["csharp|inlay_hints"] = {
+						csharp_enable_inlay_hints_for_implicit_object_creation = true,
+						csharp_enable_inlay_hints_for_implicit_variable_types = true,
+						csharp_enable_inlay_hints_for_lambda_parameter_types = true,
+						csharp_enable_inlay_hints_for_types = true,
+					},
+					["csharp|code_lens"] = {
+						dotnet_enable_references_code_lens = true,
+					},
+					["csharp|background_analysis"] = {
+						dotnet_analyzer_diagnostics_scope = true,
+					},
+					["csharp|completion"] = {
+						dotnet_show_completion_items_from_unimported_namespaces = true,
+						dotnet_show_name_completion_suggestions = true,
+					},
+					["csharp|symbol_search"] = {
+						dotnet_search_reference_assemblies = true,
+					},
+				},
+			},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
 			-- Some languages (like typescript) have entire language plugins that can be useful:
