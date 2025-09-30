@@ -36,4 +36,4 @@ vim.opt.inccommand = "split"
 vim.opt.scrolloff = 10
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp= "␣" } 
 -- vim.opt.cmdheight = 0
-
+-- vim.opts.rocks.enabled = false

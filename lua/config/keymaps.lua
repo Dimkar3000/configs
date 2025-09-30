@@ -33,6 +33,8 @@ return {
 		)
 
 		vim.keymap.set("n", "<leader>b", ":bprevious<CR>", { desc = "Open Previous Buffer" })
+		vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {remap = false, desc = "Escape Terminal"})
+		vim.keymap.set("n", "<leader>`", ":sp term://pwsh<CR>")
 	end,
 
 	keymap_blink_cmp = {
