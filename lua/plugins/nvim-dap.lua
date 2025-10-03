@@ -1,10 +1,9 @@
 return {
-	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
 	dependencies = {
+		"mfussenegger/nvim-dap",
+		"nvim-neotest/nvim-nio",
 		"ramboe/ramboe-dotnet-utils",
 		"nvim-lua/plenary.nvim",
 	},
-	-- config = function()
-	--   require "custom-config.nvim-dap-ui"
-	-- end,
 }

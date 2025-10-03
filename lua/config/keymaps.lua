@@ -1,3 +1,4 @@
+
 local map = function(event, keys, func, desc, mode)
 	mode = mode or "n"
 	vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -33,7 +34,7 @@ return {
 		)
 
 		vim.keymap.set("n", "<leader>b", ":bprevious<CR>", { desc = "Open Previous Buffer" })
-		vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {remap = false, desc = "Escape Terminal"})
+		vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { remap = false, desc = "Escape Terminal" })
 		vim.keymap.set("n", "<leader>`", ":sp term://pwsh<CR>")
 	end,
 
@@ -93,11 +94,16 @@ return {
 		map(event, "grt", require("fzf-lua").lsp_typedefs, "[G]oto [T]ype Definition")
 	end,
 	setup_lsp_client = function(event)
-		map(
-			event,
-			"<leader>th",
-			function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })) end,
-			"[T]oggle Inlay [H]ints"
-		)
+		if vim.lsp.get_client_by_id(event.data.client_id).name == "roslyn" then
+			build_and_run_roslyn = function()
+				local dap = require("dap")
+				vim.cmd([[silent!!dotnet build]])
+				dap.set_exception_breakpoints()
+				dap.continue()
+			end
+			vim.cmd([[anoremenu PopUp.-2- <Nop>]])
+			vim.cmd([[anoremenu PopUp.Tooggle\ Breakpoint <Cmd>lua require("dap").toggle_breakpoint()<CR>]])
+			vim.cmd([[anoremenu PopUp.Build\ and\ Run <Cmd>lua build_and_run_roslyn()<CR>]])
+		end
 	end,
 }

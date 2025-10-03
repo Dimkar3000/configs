@@ -82,16 +82,7 @@ return {
 					})
 				end
 
-				-- The following code creates a keymap to toggle inlay hints in your
-				-- code, if the language server you are using supports them
-				--
-				-- This may be unwanted, since they displace some of your code
-				if
-					client
-					and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
-				then
-					require("config.keymaps").setup_lsp_client(event)
-				end
+				require("config.keymaps").setup_lsp_client(event)
 			end,
 		})
 
